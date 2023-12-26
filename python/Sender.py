@@ -7,9 +7,7 @@ HOST = "127.0.0.1"
 PORT = 1234
 
 def main():
-    obj = TestObject()
-    obj.field1 = 12345
-    obj.field2 = "Hello World from Python!"
+    obj = TestObject(12345, "Hello World from Python!")
     obj_dict = asdict(obj)
     serialized_obj_str = json.dumps(obj_dict)
     serialized_obj = bytes(serialized_obj_str, "utf-8")
