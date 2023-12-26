@@ -13,18 +13,19 @@ def main():
 
     con, addr = sock.accept()
     print(f"binding to: {addr}")
-    recieved_data = bytes()
+    received_data = bytes()
     while True:
         data = con.recv(1024)
         if not data:
             break
-        recieved_data += data
+        received_data += data
     con.close()
     sock.close()
-
-    serialized_obj = json.loads(recieved_data)
+	
+    unserialized_obj = json.loads(received_data)
+    obj = TestObject(**unserialized_obj)
     print("received object:")
-    print(serialized_obj)
+    print(obj)
 
 if __name__ == "__main__":
     main()
